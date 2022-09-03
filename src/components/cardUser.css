@@ -2,13 +2,14 @@
     width: 400px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
     padding: 20px;
-    margin:5px;
+    margin:3px;
     display: flex;
     align-items: center;
-    gap:20px
+    gap:20px;
+    background-color: #F9F2FF;
 }
 .card-user img{
     border-radius: 50%;
-    border: 4px solid #5353ee;
+    border: 2px solid #F52053;
     width: 90px;
 }

@@ -5,14 +5,18 @@ type CardUserProps = {
         img:string,
         name:string
     }
+
+    textButton:string
+    description:string
 }
-export function CardUser({user}:CardUserProps){
+export function CardUser({user,textButton,description}:CardUserProps){
     return(
         <div className="card-user">
             <img src={user.img}/>
             <div className='info'>
                 <h3>{user.name}</h3>
-                <Button text='Ver Perfil'/>
+                <h6>{description}</h6>
+                <Button text={textButton}/>
             </div>
         </div>
     )
