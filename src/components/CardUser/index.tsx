@@ -1,22 +1,29 @@
 import { Button } from '../Button'
-import {CardUserStyle} from './styled'
+import { CardUserStyle } from './styled'
 type CardUserProps = {
-    user:{
-        img:string,
-        name:string
+    user: {
+        name: {
+            first: string,
+            last: string
+        }
+        picture:{
+            medium: string
+        },
+        email: string
     },
-    textButton:string
+    textButton: string
 }
-export function CardUser({user,textButton}:CardUserProps){
-    return(
+export function CardUser({ user, textButton }: CardUserProps) {
+    return (
         <CardUserStyle>
-            <img src={user.img}/>
+            <img src={user.picture.medium} />
             <div className='info'>
-                <h3>{user.name}</h3>
-               <Button text={textButton}/>
+                <h3>{user.name.first}</h3>
+                {user.email}
+                <Button text={textButton} />
             </div>
         </CardUserStyle>
-            
-        
+
+
     )
 }

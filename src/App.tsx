@@ -1,6 +1,7 @@
 import {Users} from "phosphor-react";
 import {CardUser} from "./components/CardUser/"
 import {Header} from "./components/Header"
+import { List } from "./components/List";
 import { GlobalStyle } from "./globalStyle";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <GlobalStyle/>
       <Header title="Lista de Usuários" logo={logo}/>
+      <List/>
     </div>
   )
 }
