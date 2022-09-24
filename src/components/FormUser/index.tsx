@@ -10,29 +10,36 @@ export function FormUser() {
     const [cep, setCep] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [endereco, setEndereco] = useState('')
+    const [cepDigitado, setCepDigitado] = useState('')
 
+    // function listAdress(textoDigitado:String){
+    //     let adress =  getCep(textoDigitado)
+    //     console.log(adress)
+    //     // setEndereco(adress)
+    //     setIsLoading(false)   
+    // }
 
-    function listAdress(cep){
-        const adress =  getCep(cep)
-        console.log(adress)
-        setEndereco(adress.logradouro)
+    const listAdress = async () =>{
+        
+        const list = await getCep(cepDigitado)
+        console.log(cepDigitado)
+        setEndereco(list)
         setIsLoading(false)   
     }
 
     useEffect(()=>{
-         
+        // setTimeout(listAdress() , 2000);
     },[])
-    let text =''
+    
+    
     function handleKeyPress(event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        
-        console.log(event.key);
+
         if (event.key === "Enter") {
             setIsLoading(true) 
-            console.log('ok')
-            setTimeout(listAdress(text), 2000);
+            setTimeout(listAdress , 8000);
+        
           }else{
-            text += event.key;
-            console.log(text)
+            setCepDigitado(cepDigitado + event.key)
           }
       }
 
@@ -42,10 +49,10 @@ export function FormUser() {
                 <Row>
                     <h3>Cadastro Clientes</h3>
                 </Row>
-                <Form.Group className="mb-12" controlId="formBasicName">
-                    <Form.Label>Nome: </Form.Label>
-                    <Form.Control type="text" placeholder="Digite seu Nome" />
-                </Form.Group>
+                    <Form.Group className="mb-12" controlId="formBasicName">
+                        <Form.Label>Nome: </Form.Label>
+                        <Form.Control type="text" placeholder="Digite seu Nome" />
+                    </Form.Group>
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="formBasicRG">
