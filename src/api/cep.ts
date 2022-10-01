@@ -1,5 +1,4 @@
 
-
 export async function getCep(cep:string) {
     try {
         console.log(`https://viacep.com.br/ws/${cep}/json/`)
