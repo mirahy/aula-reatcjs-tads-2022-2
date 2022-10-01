@@ -7,39 +7,37 @@ import { BeatLoader } from "react-spinners";
 
 export function FormUser() {
 
-    const [cep, setCep] = useState("")
+    const [cep, setCep] = useState('01001000')
     const [isLoading, setIsLoading] = useState(false)
     const [endereco, setEndereco] = useState('')
+    const [localidade, setLocalidade] = useState('')
+    const [uf, setUf] = useState('')
 
-
+    
     const listAdress = async () =>{
         const address = await getCep(cep)
-        if (address.hasOwnProperty('erro')) {
-            alert('<b>O CEP digitado não foi encontrado !</b>')
-        }
         setEndereco(address.logradouro)
-        setIsLoading(false)   
+        setLocalidade(address.localidade)
+        setUf(address.uf)
+        setIsLoading(false)  
     }
 
     useEffect(()=>{
-    
+        listAdress()
     },[])
     let text =''
-    function handleKeyPress(event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    function handleChange(event) {
         
         if (event.key === "Enter") {
             setIsLoading(true) 
-            console.log(text)
-            setCep(text)
-            setTimeout(listAdress, 3000);
+            listAdress()
           }else{
-            text += event.key;
+            text = event.target.value;
+            setCep(text)
           }
+          
       }
 
-      function handleChange(event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        console.log(event.target.value);
-      }
 
     return (
         <FormUserStyle>
@@ -91,7 +89,7 @@ export function FormUser() {
                         <Form.Group className="mb-3" controlId="formBasicCidade">
                             <Form.Label>Cidade: </Form.Label>
                             <Form.Select aria-label="Default select example" >
-                                <option>Selecione a cidade</option>
+                                <option>{localidade ? localidade : 'Selecione a cidade'}</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -102,7 +100,7 @@ export function FormUser() {
                         <Form.Group className="mb-3" controlId="formBasicEstado">
                             <Form.Label>Estado: </Form.Label>
                             <Form.Select aria-label="Default select example" >
-                                <option>Selecione o estado</option>
+                                <option>{uf ? uf : 'Selecione o estado:'}</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
