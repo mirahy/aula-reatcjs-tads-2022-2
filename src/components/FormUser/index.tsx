@@ -26,7 +26,7 @@ export function FormUser() {
         listAdress()
     },[])
     let text =''
-    function handleChange(event) {
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         
         if (event.key === "Enter") {
             setIsLoading(true) 
@@ -89,23 +89,25 @@ export function FormUser() {
                     <Col>
                         <Form.Group className="mb-3" controlId="formBasicCidade">
                             <Form.Label>Cidade: </Form.Label>
-                            <Form.Select aria-label="Default select example" >
+                            <Form.Control type="text" placeholder="Cidade" value={localidade} onChange={()=>{}}/>
+                            {/* <Form.Select aria-label="Default select example" >
                                 <option>{localidade ? localidade : 'Selecione a cidade'}</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
-                            </Form.Select>
+                            </Form.Select> */}
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3" controlId="formBasicEstado">
                             <Form.Label>Estado: </Form.Label>
-                            <Form.Select aria-label="Default select example" >
+                            <Form.Control type="text" placeholder="Estado" value={uf} onChange={()=>{}}/>
+                            {/* <Form.Select aria-label="Default select example" >
                                 <option>{uf ? uf : 'Selecione o estado:'}</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
-                            </Form.Select>
+                            </Form.Select> */}
                         </Form.Group>
                     </Col>
                 </Row>
